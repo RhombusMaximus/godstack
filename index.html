@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GODSTACK — the curated stack</title>
+<meta name="description" content="Six tools that earn their keep: REA, Agent Reach, the Cloudflare security-audit skill, Metabase, Paperless-ngx — and the game they built.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0b;
+    --ink: #ece9e2;
+    --dim: #9a958a;
+    --faint: #6b675e;
+    --line: #26241f;
+    --gold: #e8b84b;
+    --gold-dim: #8a6c2a;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'IBM Plex Mono', ui-monospace, monospace;
+    font-size: 15px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 860px; margin: 0 auto; padding: 0 24px; }
+
+  /* ---- hero: left-anchored, one idea ---- */
+  header { padding: 96px 0 72px; }
+  .kicker {
+    font-size: 12px;
+    letter-spacing: 0.22em;
+    color: var(--gold);
+    text-transform: uppercase;
+  }
+  .kicker a { color: var(--gold); text-decoration: none; }
+  h1 {
+    font-family: 'Instrument Serif', serif;
+    font-weight: 400;
+    font-size: clamp(56px, 11vw, 104px);
+    line-height: 0.98;
+    letter-spacing: -0.01em;
+    margin: 20px 0 18px;
+  }
+  h1 em { font-style: italic; color: var(--gold); }
+  .lede {
+    font-size: 15px;
+    color: var(--dim);
+    max-width: 52ch;
+  }
+  .lede strong { color: var(--ink); font-weight: 500; }
+
+  /* ---- the manifest: numbered editorial rows, hairline separated ---- */
+  section.list { border-top: 1px solid var(--line); }
+  .entry {
+    display: grid;
+    grid-template-columns: 72px 1fr;
+    gap: 8px 24px;
+    padding: 34px 0;
+    border-bottom: 1px solid var(--line);
+    text-decoration: none;
+    color: inherit;
+  }
+  .entry:hover { background: rgba(232, 184, 75, 0.025); }
+  .entry:hover .name { color: var(--gold); }
+  .num {
+    font-size: 13px;
+    color: var(--faint);
+    padding-top: 9px;
+  }
+  .cat {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold-dim);
+    margin-bottom: 6px;
+  }
+  .entry:hover .cat { color: var(--gold); }
+  .name {
+    font-family: 'Instrument Serif', serif;
+    font-weight: 400;
+    font-size: clamp(26px, 4.6vw, 36px);
+    line-height: 1.05;
+    transition: color 0.15s ease;
+  }
+  .blurb {
+    grid-column: 2;
+    font-size: 14px;
+    color: var(--dim);
+    margin-top: 10px;
+    max-width: 62ch;
+  }
+  .meta {
+    grid-column: 2;
+    font-size: 12px;
+    color: var(--faint);
+    margin-top: 14px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 22px;
+  }
+  .meta .stars { color: var(--gold-dim); }
+  .entry:hover .meta .stars { color: var(--gold); }
+  .meta .repo { color: var(--dim); }
+  .entry:hover .meta .repo { text-decoration: underline; text-underline-offset: 3px; }
+
+  /* ---- proof of work ---- */
+  .proof {
+    padding: 64px 0 24px;
+  }
+  .proof .cat { color: var(--gold); font-size: 12px; }
+  .proof h2 {
+    font-family: 'Instrument Serif', serif;
+    font-weight: 400;
+    font-size: clamp(30px, 5vw, 42px);
+    margin: 10px 0 16px;
+    line-height: 1.05;
+  }
+  .proof p {
+    font-size: 14px;
+    color: var(--dim);
+    max-width: 60ch;
+  }
+  .proof p + p { margin-top: 12px; }
+  .proof .em { color: var(--ink); }
+  .play {
+    display: inline-block;
+    margin-top: 24px;
+    font-size: 13px;
+    color: var(--gold);
+    text-decoration: none;
+    border: 1px solid var(--gold-dim);
+    padding: 12px 22px;
+    transition: background 0.15s ease, color 0.15s ease;
+  }
+  .play:hover { background: var(--gold); color: var(--bg); }
+
+  footer {
+    margin-top: 72px;
+    padding: 28px 0 48px;
+    border-top: 1px solid var(--line);
+    font-size: 12px;
+    color: var(--faint);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 28px;
+    justify-content: space-between;
+  }
+  footer a { color: var(--dim); text-decoration: none; }
+  footer a:hover { color: var(--gold); }
+
+  @media (max-width: 560px) {
+    header { padding: 64px 0 48px; }
+    .entry { grid-template-columns: 40px 1fr; gap: 4px 14px; }
+    .num { padding-top: 11px; font-size: 12px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="kicker"><a href="/">godstack.com</a> · a curated manifest</div>
+    <h1>The God<br><em>Stack.</em></h1>
+    <p class="lede">Six tools that earn their keep. No affiliate links, no sponsors —
+      <strong>each one installed, exercised, and kept</strong> on a working machine.
+      Star counts are live from GitHub.</p>
+  </header>
+
+  <section class="list">
+
+    <a class="entry" href="https://github.com/morluto/rea">
+      <div class="num">01</div>
+      <div>
+        <div class="cat">Reverse Engineering</div>
+        <div class="name">REA</div>
+      </div>
+      <p class="blurb">Reverse-engineer anything with agents — shipped app behavior down
+        to native code. 200+ MCP tools across binaries, Electron/JavaScript, Android,
+        firmware, packet captures, and live runtime observation, with an evidence ledger
+        that keeps every claim tied to what was actually observed.</p>
+      <div class="meta">
+        <span class="stars">423,023 ★</span>
+        <span>TypeScript</span>
+        <span>207 MCP tools</span>
+        <span class="repo">github.com/morluto/rea</span>
+      </div>
+    </a>
+
+    <a class="entry" href="https://github.com/Panniantong/agent-reach">
+      <div class="num">02</div>
+      <div>
+        <div class="cat">Agent Reach</div>
+        <div class="name">Agent Reach</div>
+      </div>
+      <p class="blurb">Give your agent eyes on the whole internet. One CLI, one JSON
+        envelope: login-walled platforms, video transcripts, Chinese platforms, and clean
+        structured data. Strictly read-only, never logs in for you.</p>
+      <div class="meta">
+        <span class="stars">108,098 ★</span>
+        <span>Python</span>
+        <span>14 channels</span>
+        <span class="repo">github.com/Panniantong/agent-reach</span>
+      </div>
+    </a>
+
+    <a class="entry" href="https://github.com/cloudflare/security-audit-skill">
+      <div class="num">03</div>
+      <div>
+        <div class="cat">Security</div>
+        <div class="name">security-audit-skill</div>
+      </div>
+      <p class="blurb">A coding-agent skill that runs six-phase security audits:
+        reconnaissance, coverage-led hunting, adversarial validation — the verifier's job
+        is to disprove the finder — and schema-validated findings. The single-repo seed of
+        Cloudflare's vulnerability-discovery harness.</p>
+      <div class="meta">
+        <span class="stars">57,422 ★</span>
+        <span>JavaScript</span>
+        <span>MIT</span>
+        <span class="repo">github.com/cloudflare/security-audit-skill</span>
+      </div>
+    </a>
+
+    <a class="entry" href="https://github.com/metabase/metabase">
+      <div class="num">04</div>
+      <div>
+        <div class="cat">Business Intelligence</div>
+        <div class="name">Metabase</div>
+      </div>
+      <p class="blurb">The easy, open-source way for everyone to ask questions of data —
+        GUI query builder for the rest of us, a real SQL editor for power users,
+        dashboards, alerts, full-app embedding. Now with a first-class Agent API so your
+        AI can query the warehouse too.</p>
+      <div class="meta">
+        <span class="stars">50,117 ★</span>
+        <span>Clojure</span>
+        <span>AGPL / open-core</span>
+        <span class="repo">github.com/metabase/metabase</span>
+      </div>
+    </a>
+
+    <a class="entry" href="https://github.com/paperless-ngx/paperless-ngx">
+      <div class="num">05</div>
+      <div>
+        <div class="cat">Documents</div>
+        <div class="name">Paperless-ngx</div>
+      </div>
+      <p class="blurb">Scan, OCR, index, archive. The document manager that eats the
+        paper pile and hands back a searchable archive — with AI-suggested tags, semantic
+        search, and chat over your own documents. Docker up in minutes.</p>
+      <div class="meta">
+        <span class="stars">47,603 ★</span>
+        <span>Python · Django</span>
+        <span>GPL-3.0</span>
+        <span class="repo">github.com/paperless-ngx/paperless-ngx</span>
+      </div>
+    </a>
+
+  </section>
+
+  <section class="proof">
+    <div class="cat">Proof of work — forged with the stack</div>
+    <h2>Gravity Melee</h2>
+    <p>Star Control II's Super Melee, rebuilt as a <span class="em">vanilla-JS canvas
+      game</span>: all 25 ships, their stats, sprites, captains, weapon sounds, and the
+      full 63-module soundtrack <span class="em">reverse-engineered out of the original
+      Ur-Quan Masters binaries and sources with REA</span> — the number-one tool on this
+      list doing the job it's ranked for.</p>
+    <p>The single-player campaign is under construction: a 502-system 3D hyperspace map
+      is live, and the planetary lander minigame just shipped.</p>
+    <a class="play" href="https://rhombusmaximus.github.io/gravity-melee/">▶&nbsp;&nbsp;Play it in your browser</a>
+  </section>
+
+  <footer>
+    <span>godstack.com</span>
+    <span>stars as of Nov 2, 2026</span>
+    <span><a href="https://github.com/RhombusMaximus">curated by RhombusMaximus</a></span>
+  </footer>
+
+</div>
+</body>
+</html>
