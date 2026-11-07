@@ -109,25 +109,26 @@
   .meta .repo { color: var(--dim); }
   .entry:hover .meta .repo { text-decoration: underline; text-underline-offset: 3px; }
 
-  /* ---- proof of work ---- */
-  .proof {
-    padding: 64px 0 24px;
+  /* nested showcase under an entry (Gravity Melee under REA) */
+  .head { text-decoration: none; color: inherit; display: block; }
+  .sub {
+    grid-column: 2;
+    margin-top: 20px;
+    padding: 15px 18px 17px;
+    border: 1px solid var(--line);
+    max-width: 62ch;
   }
-  .proof .cat { color: var(--gold); font-size: 12px; }
-  .proof h2 {
-    font-family: 'Instrument Serif', serif;
-    font-weight: 400;
-    font-size: clamp(30px, 5vw, 42px);
-    margin: 10px 0 16px;
-    line-height: 1.05;
+  .sublabel {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold-dim);
+    margin-bottom: 8px;
   }
-  .proof p {
-    font-size: 14px;
-    color: var(--dim);
-    max-width: 60ch;
-  }
-  .proof p + p { margin-top: 12px; }
-  .proof .em { color: var(--ink); }
+  .gm-copy { font-size: 13px; color: var(--dim); }
+  .gm-copy .gm-name { color: var(--ink); }
+  .sub .play { margin-top: 14px; padding: 9px 16px; font-size: 12px; }
+
   .play {
     display: inline-block;
     margin-top: 24px;
@@ -177,12 +178,12 @@
 
   <section class="list">
 
-    <a class="entry" href="https://github.com/morluto/rea">
+    <div class="entry">
       <div class="num">01</div>
-      <div>
+      <a class="head" href="https://github.com/morluto/rea">
         <div class="cat">Reverse Engineering</div>
         <div class="name">REA</div>
-      </div>
+      </a>
       <p class="blurb">Reverse-engineer anything with agents — shipped app behavior down
         to native code. 200+ MCP tools across binaries, Electron/JavaScript, Android,
         firmware, packet captures, and live runtime observation, with an evidence ledger
@@ -193,7 +194,16 @@
         <span>207 MCP tools</span>
         <span class="repo">github.com/morluto/rea</span>
       </div>
-    </a>
+      <div class="sub">
+        <div class="sublabel">built with it</div>
+        <p class="gm-copy"><span class="gm-name">Gravity Melee</span> — Star Control II's
+          Super Melee rebuilt in vanilla JS. Every sprite, ship stat, weapon sound and the
+          63-module soundtrack reverse-engineered out of the original Ur-Quan Masters
+          binaries and sources. Campaign in progress: 502-system 3D hyperspace is live,
+          and the planetary lander minigame just shipped.</p>
+        <a class="play" href="https://rhombusmaximus.github.io/gravity-melee/">▶&nbsp;&nbsp;Play in your browser</a>
+      </div>
+    </div>
 
     <a class="entry" href="https://github.com/Panniantong/agent-reach">
       <div class="num">02</div>
@@ -265,19 +275,6 @@
       </div>
     </a>
 
-  </section>
-
-  <section class="proof">
-    <div class="cat">Proof of work — forged with the stack</div>
-    <h2>Gravity Melee</h2>
-    <p>Star Control II's Super Melee, rebuilt as a <span class="em">vanilla-JS canvas
-      game</span>: all 25 ships, their stats, sprites, captains, weapon sounds, and the
-      full 63-module soundtrack <span class="em">reverse-engineered out of the original
-      Ur-Quan Masters binaries and sources with REA</span> — the number-one tool on this
-      list doing the job it's ranked for.</p>
-    <p>The single-player campaign is under construction: a 502-system 3D hyperspace map
-      is live, and the planetary lander minigame just shipped.</p>
-    <a class="play" href="https://rhombusmaximus.github.io/gravity-melee/">▶&nbsp;&nbsp;Play it in your browser</a>
   </section>
 
   <footer>
